@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  main:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 && python manage.py collecstatic"
+    container_name: main
+    volumes:
+      - .:/source/
+    ports:
+      - "8000:8000"
+    networks:
+      - wall
+    restart: always
+
+  nginx:
+    container_name: nginx
+    command: nginx -g 'daemon off;'
+    image: nginx:latest
+    depends_on:
+      - main
+    networks:
+      - wall
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  wall:

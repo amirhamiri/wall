@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-05 17:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\accounts\apps.py:7
+msgid "accounts"
+msgstr "حساب های کاربری"
+
+#: .\accounts\managers.py:14
+msgid "username must have at least 4 characters"
+msgstr "نام کاربری باید حداقل حاوی چهار نویسه باشد."
+
+#: .\accounts\managers.py:28
+msgid "Users must have a username"
+msgstr "کاربران باید نام کاربری داشته باشند."
+
+#: .\accounts\models.py:9 .\accounts\tests\test_models.py:13
+msgid "username"
+msgstr "نام کاربری"
+
+#: .\accounts\models.py:19
+msgid "user"
+msgstr "کاربر"
+
+#: .\accounts\models.py:20
+msgid "users"
+msgstr "کاربران"
+
+#: .\ads\apps.py:7 .\ads\models.py:23
+msgid "ads"
+msgstr "آگهی ها"
+
+#: .\ads\models.py:8
+msgid "date published"
+msgstr "تاریخ انتشار"
+
+#: .\ads\models.py:10 .\ads\tests\test_models.py:15
+msgid "title"
+msgstr "عنوان"
+
+#: .\ads\models.py:11 .\ads\tests\test_models.py:19
+#, fuzzy
+#| msgid "caption "
+msgid "caption"
+msgstr "توضیحات"
+
+#: .\ads\models.py:12 .\ads\tests\test_models.py:23
+msgid "image"
+msgstr "تصویر"
+
+#: .\ads\models.py:13
+msgid "is public"
+msgstr "منتشر شده"
+
+#: .\ads\models.py:14
+msgid "Public Ads will be displayed in the api views."
+msgstr "آگهی های منتشر شده در برنامه قابل مشاهده هستند."
+
+#: .\ads\models.py:17
+msgid "publisher"
+msgstr "ناشر آگهی"
+
+#: .\ads\models.py:22
+msgid "ad"
+msgstr "آگهی"
