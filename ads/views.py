@@ -1,25 +1,25 @@
 from django.http import Http404
-from django.shortcuts import render
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
-from rest_framework.generics import get_object_or_404
 from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from .models import Ad
 from .serializers import AdSerializer
 from .permissions import IsPublisherOrReadOnly
 from .pagination import StandardResultsSetPagination
 
 
-class AdListView(APIView):
+class AdListView(APIView, StandardResultsSetPagination):
     permission_classes = [IsPublisherOrReadOnly]
     serializer_class = AdSerializer
+
     def get(self, request):
         queryset = Ad.objects.filter(is_public=True)
-        serializer = AdSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        result = self.paginate_queryset(queryset, request)
+        serializer = AdSerializer(result, many=True)
+        return self.get_paginated_response(serializer.data)
 
 
 class AdCreateView(APIView):
@@ -62,3 +62,5 @@ class AdDetailView(APIView):
         ad = self.get_object(pk)
         ad.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+

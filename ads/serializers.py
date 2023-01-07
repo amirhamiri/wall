@@ -4,6 +4,7 @@ from .models import Ad
 
 class AdSerializer(serializers.ModelSerializer):
     publisher = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = Ad
         fields = '__all__'
