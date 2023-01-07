@@ -1,6 +1,13 @@
 # Wall
-Wall is a Django project based on DRF to share advertisements.
-## Run project on localhost
+## a real world open source example of django-rest-framework (DRF)
+### some features:
+- Compliance with the principles of test writing DRF
+- Compliance with the principles of clean coding
+- Dockerized
+- Using the nginx web server
+- Documented and visualized by Swagger
+#### Wall is a Django project based on DRF to share advertisements
+#### If you want to get a good understanding of API and DRF, fork the project and participate in its development.
 - In terminal: `git clone https://github.com/amirhamiri/wall`
 - cd `/wall` Where the manage.py is
 - In terminal: `python -m venv venv`

@@ -2,11 +2,16 @@ import os
 from datetime import timedelta
 from pathlib import Path
 from decouple import config
+from django.core.management.utils import get_random_secret_key
 
+# generating and printing the SECRET_KEY
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
-SECRET_KEY = config('SECRET_KEY')
+try:
+    SECRET_KEY = config('SECRET_KEY')
+except:
+    SECRET_KEY = get_random_secret_key()
 
 
 
