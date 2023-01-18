@@ -7,7 +7,7 @@ from accounts.models import User
 class AuthorModelTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='Pedi')
+        cls.user = User.objects.create_user(phone='12345678901', username='Pedi')
         cls.ad = Ad.objects.create(title='Iphone', caption='nice', publisher=cls.user)
 
     def test_title_label(self):

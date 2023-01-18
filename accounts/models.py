@@ -5,6 +5,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractBaseUser):
+    phone = models.CharField(
+        verbose_name=_('phone number'),
+        max_length=11,
+        unique=True,
+    )
     username = models.CharField(
         verbose_name=_('username'),
         max_length=40,
@@ -13,7 +18,8 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     objects = UserManager()
-    USERNAME_FIELD = 'username'
+
+    USERNAME_FIELD = 'phone'
 
     class Meta:
         verbose_name = _('user')

@@ -15,7 +15,7 @@ class TestAdListView(APITestCase):
     def setUpTestData(cls):
         cls.username = 'amir'
         cls.password = 'test1234'
-        cls.user = User.objects.create_user(username='amir', password='test1234')
+        cls.user = User.objects.create_user(phone='12345678901', username='amir', password='test1234')
         cls.ad = Ad.objects.create(title='Iphone', caption='Nice')
         refresh = RefreshToken.for_user(cls.user)
         cls.token = str(refresh.access_token)
@@ -32,7 +32,7 @@ class TestAdDetailView(APITestCase):
     def setUpTestData(cls):
         cls.username = 'amir'
         cls.password = 'test1234'
-        cls.user = User.objects.create_user(username='amir', password='test1234')
+        cls.user = User.objects.create_user(phone='12345678901', username='amir', password='test1234')
         cls.ad = Ad.objects.create(title='Iphone', caption='Nice')
         refresh = RefreshToken.for_user(cls.user)
         cls.token = str(refresh.access_token)
@@ -80,7 +80,7 @@ class TestAdCreateView(APITestCase):
     def setUpTestData(cls):
         cls.username = 'amir'
         cls.password = 'test1234'
-        cls.user = User.objects.create_user(username='amir', password='test1234')
+        cls.user = User.objects.create_user(phone='12345678901', username='amir', password='test1234')
         cls.ad = Ad.objects.create(title='Iphone', caption='Nice')
         refresh = RefreshToken.for_user(cls.user)
         cls.token = str(refresh.access_token)
