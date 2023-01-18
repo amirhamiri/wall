@@ -40,7 +40,7 @@ class UserRegisterView(APIView):
             clean_data = serializer.validated_data
             randcode = otp_service.generate_otp(clean_data['phone'])
            
-            cache.set(key='register', value={'phone': clean_data['phone'], 'password': clean_data['password'], 'username': clean_data['username'], 'code': randcode}, timeout=300)
+            cache.set(key='register', value={'phone': clean_data['phone'], 'password': clean_data['password'], 'username': clean_data['username']}, timeout=300)
 
             return Response({'phone': clean_data['phone'], 'result': 'otp sended'}, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -53,13 +53,13 @@ class CheckOtpCodeView(APIView):
         data = cache.get(key='register')
         serializer = serializers.GetOtpSerializer(data=request.data)
         otp_obj = OTP()
-
+        if data is None:
+            return Response({'error': 'this code not exist or invalid'}, status=status.HTTP_404_NOT_FOUND)
         if serializer.is_valid():
-            print(data['code'])
             clean_data = serializer.validated_data
             if otp_obj.verify_otp(otp=clean_data['code'], phone=data['phone']):
                 user = User.objects.create_user(
-                    email=data['email'], username=data['full_name'], password=data['password'])
+                    phone=data['phone'], username=data['username'], password=data['password'])
 
                 result = serializer.save(validated_data=user)
                 return Response(result, status=status.HTTP_201_CREATED)

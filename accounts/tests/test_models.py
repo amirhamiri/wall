@@ -6,7 +6,7 @@ from accounts.models import User
 class AuthorModelTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create(username='Kami')
+        cls.user = User.objects.create_user(phone='12345678901', username='jack', password='1234')
 
     def test_username_label(self):
         field_label = self.user._meta.get_field('username').verbose_name
@@ -16,6 +16,6 @@ class AuthorModelTest(APITestCase):
         expected_object_name = f'{self.user.username}'
         self.assertEqual(str(self.user), expected_object_name)
 
-    def test_str_method(self):
-        expected_result = self.user.username
+def test_str_method(self):
+        expected_result = self.user.phone
         self.assertEqual(self.user.__str__(), expected_result)
